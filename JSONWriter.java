@@ -11,9 +11,11 @@ import java.sql.Statement;
 
 import org.json.simple.JSONObject;
 
-public class JSONWriter {
+public class JSONWriter 
+{
 	@SuppressWarnings("unchecked")
-	static void write(Connection c, String file) {
+	static void write(Connection c, String file) 
+	{
 
 	try
 	{
@@ -26,10 +28,10 @@ public class JSONWriter {
 		String sql = "select name, hours from Spiele;";
 		ResultSet rs = stmt.executeQuery(sql);
 
-		while(rs.next()) {
+		while(rs.next()) 
+		{
 			String name = rs.getString("name");
 			int h = rs.getInt("hours");
-
 
 			jsonO.put("gameName", name);
 			jsonO.put("hoursPlayed", h);
@@ -41,10 +43,14 @@ public class JSONWriter {
 		fw.close();
 		rs.close();
 		stmt.close();
-	}catch (IOException  e){
-		e.printStackTrace();
-	}catch (SQLException e) {
+	}
+	catch (IOException  e)
+	{
 		e.printStackTrace();
 	}
-}
+	catch (SQLException e) 
+	{
+		e.printStackTrace();
+	}
+  }
 }
